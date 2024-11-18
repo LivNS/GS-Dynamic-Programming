@@ -10,9 +10,9 @@ def gerar_csv_aleatorio(nome_arquivo='dados_energia.csv', horas=24):
 
         # cria dataframe
         dados = pd.DataFrame({
-            'Hora': horas_dia,
-            'Demanda': demanda,
-            'Oferta_renovavel': oferta_renovavel
+            'hora': horas_dia,
+            'demanda': demanda,
+            'oferta_renovavel': oferta_renovavel
         })
 
         # salva em csv
