@@ -2,12 +2,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # =======================
-# Constantes
+# definindo as constantes
 # =======================
-CONSUMO_MEDIO_HORA = 1.918  # kWh/h, baseado no cálculo per capita
+CONSUMO_MEDIO_HORA = 1.918  # kWh/h, baseado no cálculo per capita 
 
 # =======================
-# Coleta de Dados
+# coleta de Dados
 # =======================
 def coletar_dados(caminho_csv=None, usar_dados_ficcionais=True):
     if usar_dados_ficcionais:
@@ -24,17 +24,17 @@ def coletar_dados(caminho_csv=None, usar_dados_ficcionais=True):
             return None
         try:
             dados = pd.read_csv(caminho_csv)
-            dados['demanda'] *= CONSUMO_MEDIO_HORA  # Ajuste no consumo
+            dados['demanda'] *= CONSUMO_MEDIO_HORA  
             print("Dados reais carregados e ajustados com média per capita.")
         except Exception as e:
             print(f"Erro ao carregar dados reais: {e}")
             return None
     
-    dados.dropna(inplace=True)  # Remover valores ausentes
+    dados.dropna(inplace=True)  # remover valores ausentes
     return dados
 
 # =======================
-# Inicialização da Tabela de DP
+# inicialização da tabela de DP
 # =======================
 def inicializar_dp(dados):
     n = len(dados)
@@ -44,7 +44,7 @@ def inicializar_dp(dados):
     return dp
 
 # =======================
-# Função de Transição de Estados
+# função de yransição de estados
 # =======================
 def calcular_custos_dp(dados, dp):
     for i in range(1, len(dados)):
@@ -56,7 +56,7 @@ def calcular_custos_dp(dados, dp):
     return dp
 
 # =======================
-# Obter Solução Ótima e Insights
+# obter solução ótima e Insights
 # =======================
 def obter_insights(dados, dp, salvar=False):
     horas_atendidas = sum(dados['demanda'] <= dados['oferta_renovavel'])
@@ -82,7 +82,7 @@ def obter_insights(dados, dp, salvar=False):
         print("Insights salvos no arquivo 'resultados_insights.txt'.")
 
 # =======================
-# Visualização dos Dados
+# visualização dos dados
 # =======================
 def visualizar_dados(dados, dp):
     plt.figure(figsize=(12, 6))
@@ -101,7 +101,7 @@ def visualizar_dados(dados, dp):
     plt.show()
 
 # =======================
-# Menu Interativo
+# menu 
 # =======================
 def menu():
     dados = None
@@ -138,8 +138,5 @@ def menu():
         else:
             print("Opção inválida. Tente novamente.")
 
-# =======================
-# Executar Programa
-# =======================
 if __name__ == "__main__":
     menu()
