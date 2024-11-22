@@ -1,3 +1,11 @@
+''' 
+=======================
+DEBORA AMARAL - RM:550412
+LEVY JUNIOR - RM:98655
+LÍVIA NAMBA - RM:97819
+=======================
+''' 
+
 import pandas as pd
 import matplotlib.pyplot as plt
 
